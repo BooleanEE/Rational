@@ -20,7 +20,6 @@ def test_if_rational_multiplication_is_correct():  # pylint: disable=C0116
     assert mult_result_rational.num == expected_rational.num
     assert mult_result_rational.den == expected_rational.den
 
-
 def test_if_rational_division_is_correct():  # pylint: disable=C0116
     first_rational = Rational(7, 11)
     second_rational = Rational(7, 22)
@@ -52,3 +51,32 @@ def test_if_rational_subtraction_is_correct():  # pylint: disable=C0116
 
     assert sub_result_rationl.num == expected_rational.num
     assert sub_result_rationl.den == expected_rational.den
+
+def test_if_rational_negative_is_correct():  # pylint: disable=C0116
+    test_rational = Rational(7, 7)
+    expected_rational = Rational(-7, 7)
+
+    neg_result_rationl = -test_rational
+
+    assert neg_result_rationl.num == expected_rational.num
+    assert neg_result_rationl.den == expected_rational.den
+
+def test_if_rational_leftshift_is_correct():  # pylint: disable=C0116
+    test_rational = Rational(7, 2)
+    left_shift_times = 2
+    expected_rational = Rational(28, 2)
+
+    leftshift_result_rationl = test_rational << left_shift_times
+
+    assert leftshift_result_rationl.num == expected_rational.num
+    assert leftshift_result_rationl.den == expected_rational.den
+
+def test_if_rational_rightshift_is_correct():  # pylint: disable=C0116
+    test_rational = Rational(7, 2)
+    right_shift_times = 2
+    expected_rational = Rational(7, 8)
+
+    rightshift_result_rationl = test_rational >> right_shift_times
+
+    assert rightshift_result_rationl.num == expected_rational.num
+    assert rightshift_result_rationl.den == expected_rational.den
