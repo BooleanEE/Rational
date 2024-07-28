@@ -17,5 +17,28 @@ class Rational:
         den = self.den * other_rational.den
         return Rational(num, den)
 
+    def __truediv__(self, other_rational: Rational) -> Rational:
+        num = self.num * other_rational.den
+        den = self.den * other_rational.num
+        return Rational(num, den)
+
+    def __add__(self, other_rational: Rational) -> Rational:
+        if self.den == other_rational.den:
+            num = self.num + other_rational.num
+            den = self.den
+        else:
+            num = self.num * other_rational.den + other_rational.num * self.den
+            den = self.den * other_rational.den
+        return Rational(num, den)
+
+    def __sub__(self, other_rational: Rational) -> Rational:
+        if self.den == other_rational.den:
+            num = self.num - other_rational.num
+            den = self.den
+        else:
+            num = self.num * other_rational.den - other_rational.num * self.den
+            den = self.den * other_rational.den
+        return Rational(num, den)
+
     def __str__(self):
         return str(self.num) + "/" + str(self.den)
