@@ -39,17 +39,34 @@ class Rational:
             num = self.num * other_rational.den - other_rational.num * self.den
             den = self.den * other_rational.den
         return Rational(num, den)
-    
+
     def __neg__(self) -> Rational:
         return Rational(-self.num, self.den)
-    
+
     def __lshift__(self, left_shift_operations: int) -> Rational:
         num = self.num << left_shift_operations
         return Rational(num, self.den)
-    
+
     def __rshift__(self, right_shift_operations: int) -> Rational:
         den = self.den << right_shift_operations
         return Rational(self.num, den)
+
+    def great_common_divisor(self) -> int: # pylint: disable=C0116
+        first_number = self.num
+        second_number = self.den
+        while first_number % second_number > 0:
+            remainder = first_number % second_number
+            first_number = second_number
+            second_number = remainder
+        great_common_divisor = second_number
+
+        return great_common_divisor
+
+    def reduced_form_conversion(self) -> Rational: # pylint: disable=C0116
+        gdc = self.great_common_divisor()
+        self.num /= gdc
+        self.den /= gdc
+        return Rational(self.num, self.den)
 
     def __str__(self):
         return str(self.num) + "/" + str(self.den)

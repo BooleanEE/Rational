@@ -80,3 +80,15 @@ def test_if_rational_rightshift_is_correct():  # pylint: disable=C0116
 
     assert rightshift_result_rationl.num == expected_rational.num
     assert rightshift_result_rationl.den == expected_rational.den
+
+def test_if_rational_reduced_form_is_correct():
+    first_rational = Rational(7, 3)
+    second_rational = Rational(2, 4)
+    expected_rational = Rational(17, 6)
+
+    sum_result_rationl = first_rational + second_rational
+
+    reduced_rational = sum_result_rationl.reduced_form_conversion()
+
+    assert reduced_rational.num == expected_rational.num
+    assert reduced_rational.den == expected_rational.den
