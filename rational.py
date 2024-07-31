@@ -51,7 +51,49 @@ class Rational:
         den = self.den << right_shift_operations
         return Rational(self.num, den)
 
-    def great_common_divisor(self) -> int: # pylint: disable=C0116
+    def __lt__(self, other_rational: Rational) -> bool:
+        result = Rational(self.num, self.den) - other_rational
+        if result.num < -0.00000000:
+            return True
+        return False
+
+    def __eq__(self, other_rational: Rational) -> bool:
+        result = Rational(self.num, self.den) - other_rational
+        if result.num == 0.00000000:
+            return True
+        return False
+
+    def __gt__(self, other_rational: Rational) -> bool:
+        result = Rational(self.num, self.den) - other_rational
+        if result.num > 0.00000000:
+            return True
+        return False
+
+    def __ne__(self, other_rational: Rational) -> bool:
+        if (
+            Rational(self.num, self.den) < other_rational
+            or Rational(self.num, self.den) > other_rational
+        ):
+            return True
+        return False
+
+    def __le__(self, other_rational: Rational) -> bool:
+        if (
+            Rational(self.num, self.den) < other_rational
+            or Rational(self.num, self.den) == other_rational
+        ):
+            return True
+        return False
+
+    def __ge__(self, other_rational: Rational) -> bool:
+        if (
+            Rational(self.num, self.den) > other_rational
+            or Rational(self.num, self.den) == other_rational
+        ):
+            return True
+        return False
+
+    def great_common_divisor(self) -> int:  # pylint: disable=C0116
         first_number = self.num
         second_number = self.den
         while first_number % second_number > 0:
@@ -62,7 +104,7 @@ class Rational:
 
         return great_common_divisor
 
-    def reduced_form_conversion(self) -> Rational: # pylint: disable=C0116
+    def reduced_form_conversion(self) -> Rational:  # pylint: disable=C0116
         gdc = self.great_common_divisor()
         self.num /= gdc
         self.den /= gdc

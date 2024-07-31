@@ -92,3 +92,57 @@ def test_if_rational_reduced_form_is_correct():
 
     assert reduced_rational.num == expected_rational.num
     assert reduced_rational.den == expected_rational.den
+
+def test_if_rational_is_less_than_other_rational():
+    first_rational = Rational(1, 2)
+    second_rational = Rational(2, 3)
+    expected_bool = True
+
+    is_first_less_than_second = first_rational < second_rational
+
+    assert is_first_less_than_second == expected_bool
+
+def test_if_rational_is_equal_than_other_rational():
+    first_rational = Rational(1, 7)
+    second_rational = Rational(2, 14)
+    expected_bool = True
+
+    is_first_equal_than_second = first_rational == second_rational
+
+    assert is_first_equal_than_second == expected_bool
+
+def test_if_rational_is_greater_than_other_rational():
+    first_rational = Rational(1, 2)
+    second_rational = Rational(1, 3)
+    expected_bool = True
+
+    is_first_greater_than_second = first_rational > second_rational
+
+    assert is_first_greater_than_second == expected_bool
+
+def test_if_rational_is_less_equal_than_other_rational():
+    first_rational = Rational(1, 2)
+    second_rational = Rational(2, 3)
+    expected_bool = True
+
+    is_first_greater_than_second = first_rational <= second_rational
+
+    assert is_first_greater_than_second == expected_bool
+
+def test_if_rational_is_greater_equal_than_other_rational():
+    first_rational = Rational(7, 3)
+    second_rational = Rational(7, 7)
+    expected_bool = True
+
+    is_first_greater_than_second = first_rational >= second_rational
+
+    assert is_first_greater_than_second == expected_bool
+
+def test_if_rational_is_not_equal_than_other_rational():
+    first_rational = Rational(7, 3)
+    second_rational = Rational(7, 7)
+    expected_bool = True
+
+    is_first_greater_than_second = first_rational != second_rational
+
+    assert is_first_greater_than_second == expected_bool
